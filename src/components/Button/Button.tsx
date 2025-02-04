@@ -1,22 +1,54 @@
-// import React, { ReactElement } from "react" ;
-
-// interface ButtonProps {
-//     label : string;
-//     type: string;
-    
-// }
-
-// const Button =(props:ButtonProps)=>{
-//     return (
-//         <>
-//            <button className="outline text-2xl p-2">{props.label}</button>
-//         </>
-//     )
-// };
-
-// export default Button;
-
-
+/** 
+ * 
+ * ### Button Component
+ * 
+ * @description A reusable Button component that allows users to create buttons with predefined styles and icon placements.
+ * 
+ * ### Features:
+ * - **Icon Placement:** Supports placing an icon on the left, right, or center of the button.
+ * - **Multiple Style Options:** Supports different button styles (`primary`, `secondary`, `gradient`).
+ * - **Fully Accessible:** Uses semantic HTML and supports standard button attributes.
+ * - **Custom Styling:** Accepts Tailwind CSS classes via the `className` prop.
+ * 
+ * ### Props:
+ * @param {string} key - Unique identifier for the button.
+ * @param {ReactElement} [leftIcon] - Icon to be placed on the left side of the button.
+ * @param {ReactElement} [rightIcon] - Icon to be placed on the right side of the button.
+ * @param {ReactElement} [centerIcon] - Icon to be placed in the center of the button (useful when no text is present).
+ * @param {"primary" | "secondary" | "gradient"} [buttonType="primary"] - Defines the button style.
+ * @param {boolean} [disabled=false] - Determines whether the button is disabled.
+ * @param {string} [className] - Additional Tailwind CSS classes for styling.
+ *.
+ * 
+ * @example **Basic Usage**
+ *
+ * <Button key="basic" buttonType="primary">
+ *   Click Me
+ * </Button>
+ * 
+ * 
+ * @example **With Left Icon**
+ * 
+ *   <Button key="leftIconBtn" buttonType="secondary" leftIcon={<BeakerIcon className="h-5 w-5 text-white" />}>
+ *     Click Me
+     </Button>
+ * 
+ * 
+ * @example **With Right Icon**
+ * 
+ *  <Button key="rightIconBtn" buttonType="gradient" rightIcon={<ArrowRightIcon className="h-5 w-5 text-white" />}>
+ *    button with right icon
+ *  </Button>
+ * 
+ * @example **Disabled Button**
+ * 
+ *   <Button key="disabledBtn" buttonType="primary" disabled>
+ *     Disabled
+ *   </Button>
+ *
+ * 
+ * @returns {JSX.Element} - A styled `<button>` element.
+ */
 import React, { forwardRef, memo, useMemo } from "react";
 
 type BaseButtonAttributes = React.ComponentPropsWithoutRef<"button">;

@@ -1,9 +1,10 @@
 {
   "name": "@nikhilbhojak/component-library",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "rollup": "rollup -c"
+    "rollup": "rollup -c",
+    "doc":"jsdoc -c jsdoc.json"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +17,7 @@
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "autoprefixer": "^10.4.20",
+    "jsdoc": "^4.0.4",
     "postcss": "^8.5.1",
     "rollup": "^3.29.5",
     "rollup-plugin-dts": "^6.1.1",
