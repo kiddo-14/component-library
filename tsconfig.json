@@ -2,11 +2,12 @@
 {
   "compilerOptions": {
     // Default
-    "target": "es5", 
+    "target": "ES2015", 
     "esModuleInterop": true, 
     "forceConsistentCasingInFileNames": true,
     "strict": true, 
     "skipLibCheck": true,
+    "lib": ["ES2015", "DOM"],
 
     // Added
     "jsx": "react-jsx", 
@@ -18,5 +19,6 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": true,
-  }
+  },
+  "include": ["src", "src/types/assets.d.ts"]
 }

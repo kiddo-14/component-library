@@ -18,7 +18,7 @@ While both JavaScript and TypeScript can be used to build modern applications, T
    - As your component library grows, maintaining consistency with TypeScript becomes easier. Large-scale applications benefit from TypeScript's type system, which helps to manage complex logic and ensures that changes do not break existing code.
 
 ### 4. **Custmization**
-    - Typescript provide user to more control over the component and give chance to build the component as they want like by using concept of interface they can custmize thier component     
+   - Typescript provide user to more control over the component and give chance to build the component as they want like by using concept of interface they can custmize thier component     
 
 ## Why Rollup as the Bundler?
 
@@ -151,6 +151,25 @@ To get started with your own component library, follow these steps:
        npm i NAME_COMPONENT_LIBRARY
 
 
+### Import the image and congiguration in Rollyp.config.mjs for non JSfile
+
+  
+### LimitationS
+  **Cann't Reading null value for react-hook**
+   - @rollup/plugin-node-resolve if we are using this and in rollup.config.json we confihure our code like this 
+     resolve({
+        skip: ['react', 'react-dom'], // these are not going to bundled
+      }),
+   - Via this we are expecting here that it is not going to bundled the react and react-dom but Rollup might still include them in the final bundle if another plugin attempts to resolve them.
+   - peerDepsExternal() Only Excludes Peer Dependencies from Being Bundled 
+   - The rollup-plugin-peer-deps-external plugin automatically marks peer dependencies as external.
+    However, in some cases, it may not work correctly if dependencies are also being resolved by other plugins (e.g., @rollup/plugin-node-resolve).   
+      **Solution**
+         -  Explicitly Setting external: ['react', 'react-dom'] Directly Informs Rollup
+         - The external array in the Rollup config is the most reliable way to mark dependencies as external.
+         -  It explicitly tells Rollup: 
+               - ✅ Do not bundle react and react-dom, ever!
+               - ✅ Ensure they are provided by the consuming app instead
 
 ###  **References**
 [How to build and publish React Component Library](https://medium.com/@irekrog/quick-and-simple-create-and-publish-react-component-on-npm-df528cd26b0)

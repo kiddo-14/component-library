@@ -6,6 +6,8 @@ import terser from "@rollup/plugin-terser";
 import postcss from "rollup-plugin-postcss";
 import typescript from "@rollup/plugin-typescript";
 import {dts} from "rollup-plugin-dts";
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import image from "@rollup/plugin-image";
 
 // import packageJson from "./package.json" assert { type: "json" };
 
@@ -28,8 +30,9 @@ export default [
     ],
     plugins: [
       resolve({
-        skip: ['react', 'react-dom'], // to avoid errors like "Cannot read properties of null (reading 'useRef')"
+        skip: ['react', 'react-dom'], // these are not going to bundled
       }),
+      peerDepsExternal(), 
       commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
       postcss({
@@ -37,13 +40,15 @@ export default [
         minimize: true,
       }),
       terser(),
+      image(),
     ],
+   
   },
   {
     input: "dist/esm/types/index.d.ts",
     output: [{ file: "dist/index.d.ts", format: "esm" }],
     plugins: [dts()],
-    external: [/\.css$/],
+    external: [/\.css$/,"react", "react-dom"],
   },
   {
     input: "src/styles/main.css",

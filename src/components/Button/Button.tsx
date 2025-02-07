@@ -1,5 +1,5 @@
 /** 
- * 
+ * @component
  * ### Button Component
  * 
  * @description A reusable Button component that allows users to create buttons with predefined styles and icon placements.
@@ -49,7 +49,7 @@
  * 
  * @returns {JSX.Element} - A styled `<button>` element.
  */
-import React, { forwardRef, memo, useMemo } from "react";
+import React, { forwardRef, memo, useMemo, useState } from "react";
 
 type BaseButtonAttributes = React.ComponentPropsWithoutRef<"button">;
 type Ref = HTMLButtonElement;
@@ -67,7 +67,6 @@ interface ButtonProps extends BaseButtonAttributes {
 
 const getButtonStyles = (btntype: "primary" | "secondary" | "gradient", disabled: boolean) => {
     const baseStyles = `px-4 py-2  rounded-lg font-medium transition duration-200 flex items-center justify-center ${disabled && ' opacity-50'} `;
-
     const btntypes = {
         primary: `bg-custom-blue text-white`,
         secondary: ``,
@@ -78,6 +77,7 @@ const getButtonStyles = (btntype: "primary" | "secondary" | "gradient", disabled
 };
 
 const Button = memo(forwardRef<Ref, ButtonProps>((props, ref) => {
+    // const [btnvalue,setbtnvalue]=useState<string>('type1')
     const {
         type="button", children, buttonType = "primary", disabled=false, leftIcon = undefined, rightIcon = undefined, centerIcon=undefined ,className="", ...rest
     } = props;
