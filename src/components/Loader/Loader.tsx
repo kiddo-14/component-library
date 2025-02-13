@@ -1,5 +1,6 @@
 /**
- *  ### Loader Component
+ * @comoponent LOADER 
+ * ### Loader Component
  * 
  * @description it is reusable Loader component by passing an image , it will display the loader all over the screen* 
  *  ### Props:

@@ -1,6 +1,6 @@
 /**
  * 
- * @component \
+ * @component DROPDOWN
  * ### Dropdown Component
  * 
  * @description It is resuable dropdown component with fuctionailty of multiselect and sigle select option ,also search option is also there
@@ -111,7 +111,7 @@ const Dropdown: React.FC<DropdownProps> = ({
         <div className="relative w-full" ref={dropdownRef}>
 
             <div
-                className="min-h-10 flex items-center border rounded-lg p-2 cursor-pointer bg-white"
+                className="min-h-10 flex items-center border border-dropdown-border rounded-lg p-2 cursor-pointer bg-white"
                 onClick={() => setIsOpen(!isOpen)}
             >
                 <div className="flex flex-wrap gap-1 flex-1">
@@ -121,13 +121,13 @@ const Dropdown: React.FC<DropdownProps> = ({
                         selected.map(option => (
                             <span
                                 key={option.value}
-                                className={`${multiSelect && 'bg-blue-100 text-blue-800'} rounded-md px-2 py-1 text-md flex items-center gap-1`}
+                                className={`${multiSelect && 'bg-dropdown-filler-colour text-blue-800'} rounded-md px-2 py-1 text-md flex items-center gap-1`}
                             >
                                 {option.label}
                                 {multiSelect && (
                                     <XMarkIcon
 
-                                        className=" h-5 w-5  cursor-pointer hover:text-blue-600"
+                                        className=" h-5 w-5  cursor-pointer text-dropdown-cross-icon"
                                         onClick={(e) => removeOption(option, e)}
                                     />
                                 )}
@@ -137,7 +137,7 @@ const Dropdown: React.FC<DropdownProps> = ({
                 </div>
                 <ChevronDownIcon
 
-                    className={`transition-transform h-8 w-8 ${isOpen ? 'rotate-180' : ''}`}
+                    className={`transition-transform h-8 w-8 text-dropdown-border ${isOpen ? 'rotate-180' : ''}`}
                 />
             </div>
 

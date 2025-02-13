@@ -1,6 +1,6 @@
 {
   "name": "@nikhilbhojak/component-library",
-  "version": "1.1.27",
+  "version": "1.2.42",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "rollup": "rollup -c",
@@ -21,6 +21,8 @@
     "autoprefixer": "^10.4.20",
     "jsdoc": "^4.0.4",
     "postcss": "^8.5.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "rollup": "^3.29.5",
     "rollup-plugin-dts": "^6.1.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
@@ -38,15 +40,13 @@
   "types": "dist/index.d.ts",
   "dependencies": {
     "@heroicons/react": "^2.2.0",
-    "@rollup/plugin-json": "^6.1.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "@nikhilbhojak/component-library": "^1.2.35",
+    "@rollup/plugin-json": "^6.1.0"
   },
- "peerDependencies": {
-  "react": ">=18.0.0 <20.0.0",
-  "react-dom": ">=18.0.0 <20.0.0"
-},
-
+  "peerDependencies": {
+    "react": ">=18.0.0 <20.0.0 || ^19.0.0",
+    "react-dom": ">=18.0.0 <20.0.0 || ^19.0.0"
+  },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   }

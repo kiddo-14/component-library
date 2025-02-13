@@ -12,6 +12,13 @@ module.exports = {
         "custom-blue": "#1664df",
         "custom-hover-purple": "#7a3ede",
         "custom-hover-orange": "#e65232",
+        "primary-blue":"#6418BF",
+        "primary-light-purple":"#BD96EA",
+        "dropdown-border":"#BABABA",
+        "dropdown-filler-colour":"#E8DBF9",
+        "dropdown-cross-icon":"#8244C0",
+        "title-colour":"#371556",
+        "card-gray":"#371556"
       },
       backgroundImage: {
         "gradient-45": "linear-gradient(45deg, #8c48ff, #ff5f3d)",
