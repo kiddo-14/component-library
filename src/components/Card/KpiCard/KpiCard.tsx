@@ -1,4 +1,27 @@
-import React from "react";
+/**
+ * @component
+ * ### KPI Card
+ * 
+ * @description - it is reuseable KPI card componet that is specificaly design for kpis card like in application you want to show your kpis and their respective data so use this
+ * 
+ * ### PARAMS
+ * 
+ * @param {React.ReactElement} icon - it is for kpis icon
+ * @param {string} title - it is for the name of kpi
+ * @param {string} cardBorderColour - it is to specify the colour of border
+ * @param { string} [value] - it is for Kpis value like how much increse decrease the value of kpis or the ammount of the particular kpis
+ * @param {string} [valueColour] - determine the text colur for the kpis value
+ * @param {cardContent} cardsectionContent - it is for the kpis card content
+ * @param {React.ReactElement} caretIcon - is is careIcon to represent the kpis is value is increse or decrease
+ * 
+ * @example
+ *    <KpiCard title='KPI' icon={cardIcon}  cardsectionContent={cardContent} caretIcon={caretIcon} value='344' valueColour='text-green-400'   
+ * 
+ * @returns {JSX.Element}
+ * 
+ */
+
+import React, { JSX } from "react";
 
 interface cardContent {
     label: string

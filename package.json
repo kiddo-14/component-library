@@ -1,6 +1,6 @@
 {
   "name": "@nikhilbhojak/component-library",
-  "version": "1.2.42",
+  "version": "1.3.42",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "rollup": "rollup -c",

@@ -13,14 +13,17 @@ module.exports = {
         "custom-hover-purple": "#7a3ede",
         "custom-hover-orange": "#e65232",
         "primary-blue":"#6418BF",
-        "primary-light-purple":"#BD96EA",
+        "primary-light-purple":"#EDE8FF",
         "dropdown-border":"#BABABA",
         "dropdown-filler-colour":"#E8DBF9",
+        "primary-purple":"#E8DBF9",
         "dropdown-cross-icon":"#8244C0",
         "title-colour":"#371556",
-        "card-gray":"#371556"
+        "card-gray": "#f5f5f5",
+        "selected-card-border-colour":"#8244C0",
       },
       backgroundImage: {
+        "card-gray": "#f5f5f5",
         "gradient-45": "linear-gradient(45deg, #8c48ff, #ff5f3d)",
         "gradient-hover": "linear-gradient(45deg, #7a3ede, #e65232)",
         "gradient-tooltip":

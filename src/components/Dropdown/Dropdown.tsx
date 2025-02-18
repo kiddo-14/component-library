@@ -121,7 +121,7 @@ const Dropdown: React.FC<DropdownProps> = ({
                         selected.map(option => (
                             <span
                                 key={option.value}
-                                className={`${multiSelect && 'bg-dropdown-filler-colour text-blue-800'} rounded-md px-2 py-1 text-md flex items-center gap-1`}
+                                className={`${multiSelect && 'bg-dropdown-filler-colour text-black'} rounded-md px-2 py-1 text-md flex items-center gap-1`}
                             >
                                 {option.label}
                                 {multiSelect && (
