@@ -1,3 +1,13 @@
+
+
+import React from 'react';
+import loader from "../../assets/loader.png";
+
+
+interface LoaderProps{
+    icon:string
+} 
+
 /**
  * @comoponent LOADER 
  * ### Loader Component
@@ -13,16 +23,6 @@
  * 
  * @returns {JSX.Element} 
 */
-
-import React from 'react';
-import loader from "../../assets/loader.png";
-
-
-interface LoaderProps{
-    icon:string
-} 
-
-
 const Loader: React.FC<LoaderProps> = ({icon}) => {    
     return (
         <>

@@ -1,3 +1,22 @@
+
+import * as React from "react";
+import { useState, useEffect, useRef } from 'react';
+import { ChevronDownIcon, XMarkIcon, CheckIcon } from '@heroicons/react/16/solid';
+
+interface Option {
+    value: string;
+    label: string;
+}
+
+interface DropdownProps {
+    options: Option[];
+    placeholder?: string;
+    multiSelect?: boolean;
+    onChange?: (selected: Option | Option[]) => void;
+    defaultValue?: Option | Option[];
+    searchable?: boolean
+}
+
 /**
  * 
  * @component DROPDOWN
@@ -23,24 +42,6 @@
  * 
  * @returns {JSX.Element} 
 */
-
-import * as React from "react";
-import { useState, useEffect, useRef } from 'react';
-import { ChevronDownIcon, XMarkIcon, CheckIcon } from '@heroicons/react/16/solid';
-
-interface Option {
-    value: string;
-    label: string;
-}
-
-interface DropdownProps {
-    options: Option[];
-    placeholder?: string;
-    multiSelect?: boolean;
-    onChange?: (selected: Option | Option[]) => void;
-    defaultValue?: Option | Option[];
-    searchable?: boolean
-}
 
 
 

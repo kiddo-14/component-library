@@ -5,12 +5,23 @@ import userIon from './user.png'
 interface chatmsgProps{
     message: Message
 }
+/** 
+ * @component ChatMessage
+ * ### ChatMessage Component
+ * 
+ * ### Props:
+ * @param {Message} chatmessage - either it is user message or a AI response
+ * 
+ *
+ * 
+ * @returns {JSX.Element} - 
+ */
 
 const ChatMessage: React.FC <chatmsgProps>=({message})=>{
     
     return (
         <>
-          <div key={message.id}  className="mb-4 flex flex-col mx-auto">
+          <div key={message.id}  className="mb-4 flex flex-col  mx-auto">
             
             {message.role === "user" &&(
               // User Message
@@ -46,9 +57,8 @@ const ChatMessage: React.FC <chatmsgProps>=({message})=>{
                 </div>   
               <div className="flex justify-start w-full  items-start space-x-3"> 
                     <div
-                      className={`bg-card-gray border border-card-gray text-black p-4 break-words  whitespace-pre-wrap rounded-2xl `   }
-                    >
-                        
+                      className={`bg-card-gray border border-card-gray text-black p-3 rounded-2xl w-fit max-w-[60%] break-words mb-2 whitespace-pre-wrap`   }
+                    >     
                           {message?.text}
                     </div>
               </div>

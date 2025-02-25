@@ -1,3 +1,22 @@
+
+
+import React, { JSX } from "react";
+
+interface cardContent {
+    label: string
+    value?: string
+}
+
+interface KpiCardProps {
+    icon: React.ReactElement;
+    title: string;
+    cardsectionContent?: cardContent | cardContent[];
+    cardBorderColour: string;
+    caretIcon?: React.ReactElement;
+    value?: string;
+    valueColour?: string
+}
+
 /**
  * @component
  * ### KPI Card
@@ -20,23 +39,6 @@
  * @returns {JSX.Element}
  * 
  */
-
-import React, { JSX } from "react";
-
-interface cardContent {
-    label: string
-    value?: string
-}
-
-interface KpiCardProps {
-    icon: React.ReactElement;
-    title: string;
-    cardsectionContent?: cardContent | cardContent[];
-    cardBorderColour: string;
-    caretIcon?: React.ReactElement;
-    value?: string;
-    valueColour?: string
-}
 
 const KpiCard: React.FC<KpiCardProps> = ({ icon, title, cardsectionContent, cardBorderColour = 'border-custom-blue', caretIcon, value, valueColour }) => {
     return (

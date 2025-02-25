@@ -1,3 +1,16 @@
+
+
+import React, { ReactNode, RefObject, useEffect, useRef, useState } from "react";
+
+interface TooltipProps {
+    position: "top" | "bottom" | "left" | "right";
+    children: React.ReactNode;
+    className?: string
+    tooltipContent: string | string[]
+    tooltipColour:string
+    tooltipcontentstyle?:string
+    // elementRef:RefObject<HTMLElement>
+}
 /**
  * @component
  * 
@@ -21,20 +34,7 @@
  *  @returns  {JSX.Element}
  *      
  */
-
-import React, { ReactNode, RefObject, useEffect, useRef, useState } from "react";
-
-interface TooltipProps {
-    position: "top" | "bottom" | "left" | "right";
-    children: React.ReactNode;
-    className?: string
-    tooltipContent: string | string[]
-    tooltipColour:string
-    tooltipcontentstyle?:string
-    // elementRef:RefObject<HTMLElement>
-}
-
-const Tooltip: React.FC<TooltipProps> = ({ position, children, className, tooltipContent,tooltipcontentstyle, tooltipColour=' bg-slate-800' }) => {
+const Tooltip: React.FC<TooltipProps> = ({ position, children, className, tooltipContent,tooltipcontentstyle, tooltipColour=' bg-slate-200' }) => {
    
     const [isvisible, setisVisible] = useState<boolean>(false);
     const [tooltipStyle, setTooltipStyle] = useState({});

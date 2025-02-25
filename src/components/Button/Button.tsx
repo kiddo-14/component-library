@@ -1,3 +1,30 @@
+
+import React, { forwardRef, memo, useMemo, useState } from "react";
+
+type BaseButtonAttributes = React.ComponentPropsWithoutRef<"button">;
+type Ref = HTMLButtonElement;
+
+
+interface ButtonProps extends BaseButtonAttributes {
+    key:string;
+    disabled?: boolean;
+    leftIcon?: React.ReactElement;
+    rightIcon?: React.ReactElement;
+    centerIcon?: React.ReactElement;
+    buttonType?: "primary" | "secondary" | "gradient";
+    className?: string;
+}
+
+const getButtonStyles = (btntype: "primary" | "secondary" | "gradient", disabled: boolean) => {
+    const baseStyles = `px-4 py-2  rounded-lg font-medium transition duration-200 flex items-center justify-center ${disabled && ' opacity-50'} `;
+    const btntypes = {
+        primary: `bg-primary-blue text-white border-2  border-primary-light-purple`,
+        secondary: `bg-primary-blue text-white`,
+        gradient: `bg-gradient-45 hover:bg-gradient-hover text-white`,
+    };
+
+    return `${baseStyles} ${btntypes[btntype]} ${disabled ? "cursor-not-allowed opacity-40" : ""}`;
+};
 /** 
  * @component BUTTON
  * ### Button Component
@@ -49,32 +76,6 @@
  * 
  * @returns {JSX.Element} - A styled `<button>` element.
  */
-import React, { forwardRef, memo, useMemo, useState } from "react";
-
-type BaseButtonAttributes = React.ComponentPropsWithoutRef<"button">;
-type Ref = HTMLButtonElement;
-
-
-interface ButtonProps extends BaseButtonAttributes {
-    key:string;
-    disabled?: boolean;
-    leftIcon?: React.ReactElement;
-    rightIcon?: React.ReactElement;
-    centerIcon?: React.ReactElement;
-    buttonType?: "primary" | "secondary" | "gradient";
-    className?: string;
-}
-
-const getButtonStyles = (btntype: "primary" | "secondary" | "gradient", disabled: boolean) => {
-    const baseStyles = `px-4 py-2  rounded-lg font-medium transition duration-200 flex items-center justify-center ${disabled && ' opacity-50'} `;
-    const btntypes = {
-        primary: `bg-primary-blue text-white border-primary-light-purple`,
-        secondary: `bg-primary-blue text-white`,
-        gradient: `bg-gradient-45 hover:bg-gradient-hover text-white`,
-    };
-
-    return `${baseStyles} ${btntypes[btntype]} ${disabled ? "cursor-not-allowed opacity-40" : ""}`;
-};
 
 const Button = memo(forwardRef<Ref, ButtonProps>((props, ref) => {
     // const [btnvalue,setbtnvalue]=useState<string>('type1')

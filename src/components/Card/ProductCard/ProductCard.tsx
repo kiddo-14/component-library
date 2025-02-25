@@ -1,3 +1,15 @@
+
+
+import React from "react";
+interface CardProps {
+    image?: string;
+    title?: string;
+    description?: string | string[]
+    icon?: React.ReactElement | React.ReactElement[];
+    price?: string
+    highlightedText?: string;
+    isSelected?:boolean;
+}
 /**
  * @component
  * ### Product Card
@@ -19,17 +31,6 @@
  * @returns {JSX.Element}
  * 
  */
-
-import React from "react";
-interface CardProps {
-    image?: string;
-    title?: string;
-    description?: string | string[]
-    icon?: React.ReactElement | React.ReactElement[];
-    price?: string
-    highlightedText?: string;
-    isSelected?:boolean;
-}
 
 const ProductCard: React.FC<CardProps> = ({ image, title, description, icon, price, highlightedText,isSelected }) => {
     return (

@@ -1,4 +1,4 @@
-import React, { RefObject, useRef, useState } from "react";
+import React, { ReactElement, ReactNode, RefObject, useRef, useState } from "react";
 import ChatWindow from "./ChatWindow";
 import ChatInput from "./ChatInput";
 import { Message } from "./types";
@@ -9,11 +9,42 @@ interface ChatbotProps {
     chatmessage: Message[];
     handleSubmit: (value: any) => void;
     placeholder: string;
-    welcomeMessage: string;
+    welcomeMessage: React.ReactNode;
     inputIcon: React.ReactElement;
     isLoading:boolean
     actionsItems?: actionsItems | actionsItems[]
 }
+
+/** 
+ * @component Chatbot
+ * ### ChatBot Component
+ * 
+ * @description A reusable ChatBot component that allows users to create chatbot with predefined styles and manipulate chatbot response according to user requirements.
+ * 
+ * ### Features:
+ * - **Action Items:** According to user requirement user can add the action items like upload in input field .
+ * - **Controll over chat message:** User have full control over the chat message wheather it is user message or it is chatBot response.
+ * - **Customization:** User can customize thewelcome message and icons according to the requirements 
+ * - 
+ * 
+ * ### Props:
+ * @param {string} [chatbotName] - it is an optional props if we are using chatbot in side section where we want to name our chatbot at that time we can use this prop to name the chatbot
+ * @param {function} [closeChatbot] - for close down the chatbot component
+ * @param {Message} chatmessage - it store all the messages of the chat.
+ * @param {function} handleSubmit  - this is function that is responsible for the chatbot response.
+ * @param {string} placeholder - Define the placeholde for the input feild
+ * @param {ReactNode} welcomeMessage - define the welcome message in chat bot if there is no messages.
+ * @param {ReactElement} inputIcon - define the submit icon in chatinput field.
+ * @param {boolean} isLoading - use to make it disabled the feild unitil the Ai resposne recived back.
+ * @param {actionsItems} actionsItems - To define the actionItems in the input feild.
+ *.
+ * 
+ * @example **Basic Usage**
+ *  <Chatbot handleSubmit={handleSubmit} inputIcon={inputIcon} chatmessage={messages} placeholder={placeholder}  welcomeMessage={wlcmMsg} isLoading={isLoading}/>
+ *
+ * 
+ * @returns {JSX.Element} - 
+ */
 
 const ChatBot: React.FC<ChatbotProps> = ({ chatmessage, handleSubmit, placeholder,isLoading, welcomeMessage, inputIcon, actionsItems, closeChatbot, chatbotName }) => {
 

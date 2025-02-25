@@ -7,5 +7,5 @@ export type Message= {
 
 export interface actionsItems {
     label:string
-    icon:React.ReactElement
+    iteam:React.ReactElement
 }

@@ -6,10 +6,26 @@ import Loader from "./Loader";
 
 interface chatwindowProps {
     messages: Message[];
-    welcomeMessage: string;
+    welcomeMessage: React.ReactNode;
     chatwindowRef: RefObject<HTMLDivElement>
     isLoading: boolean
 }
+
+/** 
+ * @component ChatWindow
+ * ### ChatWindow Component
+ * 
+ * @description A Chatwindow component  all the chatmessages display here in this section.
+ * 
+ * ### Props:
+ * @param {Message} messages - it store all the messages of the chat.
+ * @param {ReactNode} welcomeMessage - define the welcome message in chat bot if there is no messages.
+ * @param {boolean} isLoading - use to make it disabled the feild unitil the Ai resposne recived back.
+ * @param {RefObject} chatwindowRef -use to reach at the recent message
+ *.
+ * 
+ * @returns {JSX.Element} - 
+ */
 const ChatWindow: React.FC<chatwindowProps> = ({ messages, welcomeMessage, chatwindowRef, isLoading }) => {
 
     useEffect(() => {
@@ -33,7 +49,7 @@ const ChatWindow: React.FC<chatwindowProps> = ({ messages, welcomeMessage, chatw
                 :
                 (
                     <p className="flex items-center justify-center h-full text-gray-500 text-base">
-                        <span>{welcomeMessage}</span>
+                        {welcomeMessage}
                     </p>
                 )
             }
