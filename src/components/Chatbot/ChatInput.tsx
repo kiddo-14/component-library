@@ -7,6 +7,9 @@ interface chatinputProps {
     onSubmit: (value: any) => void
     actionsItems?: actionsItems | actionsItems[]
     isLoading: boolean
+    inputText: string; 
+    setInputText: React.Dispatch<React.SetStateAction<string>>;
+    isdisabled:boolean
 }
 
 /** 
@@ -26,14 +29,15 @@ interface chatinputProps {
  * @param {ReactElement} submitIcon - define the submit icon in chatinput field.
  * @param {boolean} isLoading - use to make it disabled the feild unitil the Ai resposne recived back.
  * @param {actionsItems} actionsItems - To define the actionItems in the input feild.
- *.
+ * @param {string} inputText- it store the current asked query 
+ * @param {boolean} isdisabled - to make chatbot disabled
  * 
  * 
  * @returns {JSX.Element} - 
  */
 
-const ChatInput: React.FC<chatinputProps> = ({ placeholder, submitIcon, onSubmit, actionsItems, isLoading }) => {
-    const [inputText, setInputText] = useState('');
+const ChatInput: React.FC<chatinputProps> = ({ placeholder, submitIcon, onSubmit, actionsItems, isLoading,inputText,setInputText,isdisabled }) => {
+    // const [inputText, setInputText] = useState('');
     const [textareaHeight, setTextareaHeight] = useState(50);
 
 
@@ -53,13 +57,13 @@ const ChatInput: React.FC<chatinputProps> = ({ placeholder, submitIcon, onSubmit
 
     const handleKeyDown = (e: any) => {
         // Handle sending message on Enter key (without Shift)
-        if (e.key === 'Enter' && !e.shiftKey && !isLoading) {
+        if (e.key === 'Enter' && !e.shiftKey && !isLoading && !isdisabled) {
             e.preventDefault(); // Prevent the default Enter key behavior (new line)
             handleSendMessage();
         }
     };
 
-    const handleInput = (e: any) => {
+    const  handleInput = (e: any) => {
         const textarea = e.target;
         // Reset the height to 'auto' to recalculate based on content
         textarea.style.height = 'auto';
@@ -107,7 +111,7 @@ const ChatInput: React.FC<chatinputProps> = ({ placeholder, submitIcon, onSubmit
 
 
                 {/* Input field  */}
-                <div className="flex w-full items-center justify-center px-2 relative ">
+                <div className="flex w-full items-center justify-center relative ">
                     <textarea
                         rows={1}
                         cols={30}
@@ -129,9 +133,9 @@ const ChatInput: React.FC<chatinputProps> = ({ placeholder, submitIcon, onSubmit
                     />
                     <button
                         onClick={handleSendMessage}
-                        disabled={isLoading}
+                        disabled={isdisabled}
                         className={`h-full right-6 p-2 bottom-4 ml-2 shadow-md text-white flex items-center justify-center 
-        ${isLoading ? 'bg-gray-400 cursor-not-allowed' : 'bg-primary-blue'}`}
+        ${(isdisabled || isLoading) ? 'bg-gray-400 cursor-not-allowed' : 'bg-primary-blue'}`}
 
                     >
                         {submitIcon}

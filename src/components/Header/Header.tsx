@@ -60,6 +60,8 @@ const Header: React.FC<HeaderProps> = ({
     headertooltipcontentstyle,
     children
 }) => {
+
+
     return (
         <nav className="flex  items-center  bg-white border-b border-gray-300 shadow-md sticky top-0 z-50 h-auto ">
 
@@ -69,10 +71,10 @@ const Header: React.FC<HeaderProps> = ({
             </div>
 
 
-            <div className="flex px-1 w-5/6 justify-between items-center">
+            <div className=" px-1 w-5/6  grid md:grid-cols-2 sm:grid-cols-1  items-center">
 
                 {/* Center Content */}
-                <div className="flex justify-start ml-2 space-x-2 w-1/2 items-center ">
+                <div className="flex justify-start ml-2 space-x-2  items-center ">
                     <span className="text-2xl text-title-colour font-semibold">{applicationTitle}</span>
                     <Tooltip tooltipContent={infoTooltipContent} tooltipcontentstyle={headertooltipcontentstyle} tooltipColour={headertooltipcolour} position="bottom" className={tooltipStyle}>
                         <InformationCircleIcon className="h-8 w-7  text-2xl text-title-colour font-bold cursor-pointer" />
@@ -139,13 +141,13 @@ const Header: React.FC<HeaderProps> = ({
                     </div>
                 </div> */}
 
-                <div className="flex  space-x-3 justify-between px-2 py-1 items-center">
+                <div className={` grid ${children ? 'grid-cols-2' : 'grid-cols-1'} space-x-3 justify-between px-2 py-1 items-center`}>
                     {children && (
-                        <div className="flex flex-grow space-x-2 items-center">
+                        <div className={`grid grid-cols-${React.Children.count(children)} space-x-2 items-center`}>
                             {children}
                         </div>
                     )}
-                    <div className={`flex space-x-2 items-center ${children ? "w-1/2" : "w-full"} justify-end`}>
+                    <div className={`flex space-x-2 items-center justify-end`}>
                         <span className="text-md">By</span>
                         <img src={logo} alt="kanerika" className="h-8" />
                     </div>

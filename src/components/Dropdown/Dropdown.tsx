@@ -19,7 +19,7 @@ interface DropdownProps {
 
 /**
  * 
- * @component DROPDOWN
+ * @component DROPDOWN  
  * ### Dropdown Component
  * 
  * @description It is resuable dropdown component with fuctionailty of multiselect and sigle select option ,also search option is also there

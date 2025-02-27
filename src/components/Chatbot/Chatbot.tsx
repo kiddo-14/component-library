@@ -1,4 +1,4 @@
-import React, { ReactElement, ReactNode, RefObject, useRef, useState } from "react";
+import React, { Dispatch, ReactElement, ReactNode, RefObject, useRef, useState } from "react";
 import ChatWindow from "./ChatWindow";
 import ChatInput from "./ChatInput";
 import { Message } from "./types";
@@ -13,6 +13,10 @@ interface ChatbotProps {
     inputIcon: React.ReactElement;
     isLoading:boolean
     actionsItems?: actionsItems | actionsItems[]
+    inputText: string; 
+    setInputText: React.Dispatch<React.SetStateAction<string>>;
+    isdisabled:boolean
+    
 }
 
 /** 
@@ -37,7 +41,10 @@ interface ChatbotProps {
  * @param {ReactElement} inputIcon - define the submit icon in chatinput field.
  * @param {boolean} isLoading - use to make it disabled the feild unitil the Ai resposne recived back.
  * @param {actionsItems} actionsItems - To define the actionItems in the input feild.
- *.
+ *.@param {string} inputText- it store the current asked query 
+ * @param {boolean} isdisabled - to make chatbot disabled
+ *
+ * 
  * 
  * @example **Basic Usage**
  *  <Chatbot handleSubmit={handleSubmit} inputIcon={inputIcon} chatmessage={messages} placeholder={placeholder}  welcomeMessage={wlcmMsg} isLoading={isLoading}/>
@@ -46,7 +53,7 @@ interface ChatbotProps {
  * @returns {JSX.Element} - 
  */
 
-const ChatBot: React.FC<ChatbotProps> = ({ chatmessage, handleSubmit, placeholder,isLoading, welcomeMessage, inputIcon, actionsItems, closeChatbot, chatbotName }) => {
+const ChatBot: React.FC<ChatbotProps> = ({ chatmessage, handleSubmit, placeholder,isLoading, welcomeMessage, inputIcon, actionsItems, closeChatbot, chatbotName,inputText,setInputText,isdisabled }) => {
 
     // const [isScrollable, setIsScrollable]=useState<boolean>(false);
     // const[isBottom, setIsBottom]=useState<boolean>(true);
@@ -115,6 +122,10 @@ const ChatBot: React.FC<ChatbotProps> = ({ chatmessage, handleSubmit, placeholde
                     onSubmit={handleSubmit}
                     actionsItems={actionsItems as actionsItems}
                     isLoading={isLoading}
+                    inputText={inputText}
+                    setInputText={setInputText}
+                    isdisabled={isdisabled}
+                    
                 />
             </div>
         </div>  
