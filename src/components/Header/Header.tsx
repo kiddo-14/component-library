@@ -148,7 +148,7 @@ const Header: React.FC<HeaderProps> = ({
                         </div>
                     )}
                     <div className={`flex space-x-2 items-center justify-end`}>
-                        <span className="text-md">By</span>
+                        <span className="text-md text-title-colour">By</span>
                         <img src={logo} alt="kanerika" className="h-8" />
                     </div>
                 </div>

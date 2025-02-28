@@ -7,9 +7,9 @@ interface chatinputProps {
     onSubmit: (value: any) => void
     actionsItems?: actionsItems | actionsItems[]
     isLoading: boolean
-    inputText: string; 
+    inputText: string;
     setInputText: React.Dispatch<React.SetStateAction<string>>;
-    isdisabled:boolean
+    isdisabled: boolean
 }
 
 /** 
@@ -36,7 +36,7 @@ interface chatinputProps {
  * @returns {JSX.Element} - 
  */
 
-const ChatInput: React.FC<chatinputProps> = ({ placeholder, submitIcon, onSubmit, actionsItems, isLoading,inputText,setInputText,isdisabled }) => {
+const ChatInput: React.FC<chatinputProps> = ({ placeholder, submitIcon, onSubmit, actionsItems, isLoading, inputText, setInputText, isdisabled }) => {
     // const [inputText, setInputText] = useState('');
     const [textareaHeight, setTextareaHeight] = useState(50);
 
@@ -44,7 +44,7 @@ const ChatInput: React.FC<chatinputProps> = ({ placeholder, submitIcon, onSubmit
 
     const handleSendMessage = () => {
         if (inputText.trim() !== '') {
-            //   setDisableSend(true);
+            // setDisableSend(true);
             onSubmit(inputText);
             setTextareaHeight(50);
             setInputText('');
@@ -63,7 +63,7 @@ const ChatInput: React.FC<chatinputProps> = ({ placeholder, submitIcon, onSubmit
         }
     };
 
-    const  handleInput = (e: any) => {
+    const handleInput = (e: any) => {
         const textarea = e.target;
         // Reset the height to 'auto' to recalculate based on content
         textarea.style.height = 'auto';
@@ -82,32 +82,32 @@ const ChatInput: React.FC<chatinputProps> = ({ placeholder, submitIcon, onSubmit
               </div>
             )} */}
             {/* is this section have multiple section */}
-            <div className=" border bg-card-gray flex w-full space-x-2">
+            <div className=" pl-7 pr-7 flex w-full space-x-2">
                 {/* Action items */}
-               {actionsItems && (
+                {actionsItems && (
 
-                <div className="flex space-x-2 items-center">
-                    {Array.isArray(actionsItems) ? (
-                        actionsItems.map((action, index) => (
-                            
-                            <div key={index} className="p-2 ">
-                              <Tooltip position="top" tooltipContent={action.label} tooltipColour="bg-slate-800" tooltipcontentstyle="text-white" >
-                                {action.iteam}
-                             </Tooltip> 
+                    <div className="flex space-x-2 items-center">
+                        {Array.isArray(actionsItems) ? (
+                            actionsItems.map((action, index) => (
+
+                                <div key={index} className="p-2 ">
+                                    <Tooltip position="top" tooltipContent={action.label} tooltipColour="bg-slate-800" tooltipcontentstyle="text-white" >
+                                        {action.iteam}
+                                    </Tooltip>
+                                </div>
+                            ))
+                        ) : (
+
+
+                            <div className="p-2">
+                                <Tooltip position="top" tooltipContent={actionsItems.label} tooltipColour="bg-slate-800" tooltipcontentstyle="text-white"  >
+                                    {actionsItems.iteam}
+                                </Tooltip>
                             </div>
-                        ))
-                    ) : (
-                      
 
-                        <div className="p-2">   
-                            <Tooltip position="top" tooltipContent={actionsItems.label}  tooltipColour="bg-slate-800" tooltipcontentstyle="text-white"  >
-                                {actionsItems.iteam}
-                             </Tooltip> 
-                        </div>
-                       
-                    )}
-                </div>
-               )}
+                        )}
+                    </div>
+                )}
 
 
                 {/* Input field  */}
@@ -116,7 +116,7 @@ const ChatInput: React.FC<chatinputProps> = ({ placeholder, submitIcon, onSubmit
                         rows={1}
                         cols={30}
                         // className="w-full p-2 pl-2 cursor-text border-none bg-slate-50 focus:outline-none mb-2 rounded pr-10 overflow-y-auto"
-                        className="w-full size-14 bg-card-gray   p-2  focus:outline-none  rounded pr-10  overflow-y-auto"
+                        className="w-full size-14 bg-card-gray rounded-tl-md rounded-bl-md  p-3  focus:outline-none  overflow-y-auto"
                         placeholder={placeholder}
                         value={inputText}
                         onChange={handleInputChange}
@@ -134,7 +134,7 @@ const ChatInput: React.FC<chatinputProps> = ({ placeholder, submitIcon, onSubmit
                     <button
                         onClick={handleSendMessage}
                         disabled={isdisabled}
-                        className={`h-full right-6 p-2 bottom-4 ml-2 shadow-md text-white flex items-center justify-center 
+                        className={`h-full right-6 p-2 bottom-4  shadow-md text-white flex items-center rounded-tr-md rounded-br-md justify-center 
         ${(isdisabled || isLoading) ? 'bg-gray-400 cursor-not-allowed' : 'bg-primary-blue'}`}
 
                     >

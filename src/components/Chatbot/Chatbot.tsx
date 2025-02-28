@@ -77,7 +77,7 @@ const ChatBot: React.FC<ChatbotProps> = ({ chatmessage, handleSubmit, placeholde
     //     });
     //   };
     return (
-        <div className="w-full h-full flex flex-col  ">
+        <div className="w-full h-full mx-auto flex flex-col  ">
             {/* header section */}
 
             {
@@ -115,7 +115,7 @@ const ChatBot: React.FC<ChatbotProps> = ({ chatmessage, handleSubmit, placeholde
                 />
             </div>
 
-            <div className="flex flex-col  relative  w-3/4 mx-auto mb-3 rounded-lg ">
+            <div className="flex flex-col  relative  w-full p-2 mx-auto mb-3 rounded-lg ">
                 <ChatInput
                     placeholder={placeholder}
                     submitIcon={inputIcon}
