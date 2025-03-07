@@ -10,7 +10,7 @@ interface cardContent {
 interface KpiCardProps {
     icon: React.ReactElement;
     title: string;
-    cardsectionContent?: cardContent | cardContent[];
+    cardContent?: cardContent | cardContent[];
     cardBorderColour: string;
     caretIcon?: React.ReactElement;
     value?: string;
@@ -18,29 +18,42 @@ interface KpiCardProps {
 }
 
 /**
- * @component
- * ### KPI Card
+ * @component KPI Card
  * 
- * @description - it is reuseable KPI card componet that is specificaly design for kpis card like in application you want to show your kpis and their respective data so use this
+ * @description A reusable KPI card component designed to display Key Performance Indicators (KPIs) along with relevant data.
  * 
- * ### PARAMS
+ * ### Features:
+ * - Displays KPI title, icon, and value.
+ * - Supports customizable border and text colors.
+ * - Includes an optional caret icon to indicate increase or decrease trends.
  * 
- * @param {React.ReactElement} icon - it is for kpis icon
- * @param {string} title - it is for the name of kpi
- * @param {string} cardBorderColour - it is to specify the colour of border
- * @param { string} [value] - it is for Kpis value like how much increse decrease the value of kpis or the ammount of the particular kpis
- * @param {string} [valueColour] - determine the text colur for the kpis value
- * @param {cardContent} cardsectionContent - it is for the kpis card content
- * @param {React.ReactElement} caretIcon - is is careIcon to represent the kpis is value is increse or decrease
+ * ### Props:
+ * @param {React.ReactElement} icon - Icon representing the KPI.
+ * @param {string} title - The name of the KPI.
+ * @param {string} cardBorderColor - Specifies the border color of the card.
+ * @param {string} [value] - Displays the KPI value, such as percentage change or total amount.
+ * @param {string} [valueColor] - Determines the text color for the KPI value.
+ * @param {React.ReactNode} cardContent - Content inside the KPI card.
+ * @param {React.ReactElement} caretIcon - Icon representing an increase or decrease in the KPI value.
  * 
- * @example
- *    <KpiCard title='KPI' icon={cardIcon}  cardsectionContent={cardContent} caretIcon={caretIcon} value='344' valueColour='text-green-400'   
+ * ### Example Usage:
+ * ```jsx
+ * <KpiCard 
+ *   title="Revenue Growth" 
+ *   icon={<RevenueIcon />} 
+ *   cardBorderColor="border-blue-500"
+ *   value="+12%" 
+ *   valueColor="text-green-400" 
+ *   cardContent={<p>Q1 Revenue Performance</p>} 
+ *   caretIcon={<CaretUpIcon />} 
+ * />
+ * ```
  * 
  * @returns {JSX.Element}
- * 
  */
 
-const KpiCard: React.FC<KpiCardProps> = ({ icon, title, cardsectionContent, cardBorderColour = 'border-custom-blue', caretIcon, value, valueColour }) => {
+
+const KpiCard: React.FC<KpiCardProps> = ({ icon, title, cardContent, cardBorderColour = 'border-custom-blue', caretIcon, value, valueColour }) => {
     return (
         <>
             <div
@@ -61,10 +74,10 @@ const KpiCard: React.FC<KpiCardProps> = ({ icon, title, cardsectionContent, card
                                 </span>
                             )}
                         </p>
-                        {Array.isArray(cardsectionContent) ?
+                        {Array.isArray(cardContent) ?
                             <>
 
-                                {cardsectionContent.map((iteam, index) => (
+                                {cardContent.map((iteam, index) => (
 
                                     <div className="space-y-1">
                                         <div className="flex justify-between items-center">
@@ -74,11 +87,11 @@ const KpiCard: React.FC<KpiCardProps> = ({ icon, title, cardsectionContent, card
                                     </div>
 
                                 ))}
-        
+
                             </> :
                             <div className="flex justify-between items-center">
-                                <p className="text-xl font-medium text-gray-500">{cardsectionContent?.label}</p>
-                                <p className="text-xl font-medium text-gray-800">{cardsectionContent?.value}</p>
+                                <p className="text-xl font-medium text-gray-500">{cardContent?.label}</p>
+                                <p className="text-xl font-medium text-gray-800">{cardContent?.value}</p>
                             </div>
 
                         }

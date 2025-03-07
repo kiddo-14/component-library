@@ -9,20 +9,29 @@ interface LoaderProps{
 } 
 
 /**
- * @comoponent LOADER 
+ * @component LOADER
+ * 
  * ### Loader Component
  * 
- * @description it is reusable Loader component by passing an image , it will display the loader all over the screen* 
- *  ### Props:
- *   @param {string} icon - we pass the path of the image/icon by using that we want to show the loader, we are not going to pass the path directly first we are importing the image in our comopnent than pass it to loader component
+ * @description A reusable loader component that displays a full-screen loading animation using a user-defined image.
  * 
- * @example
- *  USAGE
- *  import loadericon from 'PATH_OF_IMAGE'
- *  <Loader icon={loadericon}>
+ * ### Features:
+ * - **Custom Loader Image:** The loader image is fully customizable based on user input.
+ * - **Full-Screen Overlay:** Ensures that the loader covers the entire screen.
  * 
- * @returns {JSX.Element} 
-*/
+ * ### Props:
+ * @param {string} icon - The image source for the loader.
+ * 
+ * ### Example Usage:
+ * ```jsx
+ * import loaderIcon from 'PATH_TO_IMAGE';
+ * 
+ * <Loader icon={loaderIcon} />
+ * ```
+ * 
+ * @returns {JSX.Element}
+ */
+
 const Loader: React.FC<LoaderProps> = ({icon}) => {    
     return (
         <>

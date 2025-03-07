@@ -91,7 +91,7 @@ const ChatInput: React.FC<chatinputProps> = ({ placeholder, submitIcon, onSubmit
                             actionsItems.map((action, index) => (
 
                                 <div key={index} className="p-2 ">
-                                    <Tooltip position="top" tooltipContent={action.label} tooltipColour="bg-slate-800" tooltipcontentstyle="text-white" >
+                                    <Tooltip position="top" content={action.label} colour="bg-slate-800" contentStyle="text-white" >
                                         {action.iteam}
                                     </Tooltip>
                                 </div>
@@ -100,7 +100,7 @@ const ChatInput: React.FC<chatinputProps> = ({ placeholder, submitIcon, onSubmit
 
 
                             <div className="p-2">
-                                <Tooltip position="top" tooltipContent={actionsItems.label} tooltipColour="bg-slate-800" tooltipcontentstyle="text-white"  >
+                                <Tooltip position="top" content={actionsItems.label} colour="bg-slate-800" contentStyle="text-white"  >
                                     {actionsItems.iteam}
                                 </Tooltip>
                             </div>

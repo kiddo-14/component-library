@@ -16,36 +16,54 @@ interface HeaderProps {
     applicationTitle: string;
     infoTooltipContent: string | string[];
     centerIcons?: Icons | Icons[];
-    centersectContent?: string | string[];
+    centerSectionContent?: string | string[];
     tooltipStyle?: string;
     headertooltipcolour: string
-    centerSectContentstyle?: string
+    centerSectionContentstyle?: string
     headertooltipcontentstyle?: string
     children?: React.ReactNode
 
 }
-
 /**
  * @component HEADER
  * 
- * @description it is reusable header component for the application, Using this we can develop header component for the application that contain the application, information tooltip and 2 image one of them is application logo and another one is Compan
+ * @description A reusable header component for the application. This component includes an application title, an information tooltip, and two images—one for the application logo and another for the company logo.
  * 
- * ###Params
- *  @param {string} applicationlogo - it is for logo of the product/application 
- *  @param {string} logo -it is the another logo here use for Company logo
- *  @param {string} applicationTitle - Title of the application
- *  @param {string | string[]} infoTooltipContent - Contains the tooltip content for the info icon
- *  @param {Icons |Icons} [rightIcons] - conatins the icons for the right section
- *  @param {string |string[]} [rightsectContent] - conatains the  content of right section
- *  @param {string} [tooltipStyle] - to add the CSS to tooltip
- *  @param {string} [rightSectContentstyle] - to add css to the right section content
+ * ### Features:
+ * - Displays the application and company logos.
+ * - Shows an application title.
+ * - Includes an info tooltip with customizable content.
+ * - Supports additional icons and content in the right section.
+ * - Allows custom styling for the tooltip and right section content.
+ * 
+ * ### Props:
+ * @param {string} applicationLogo - The logo of the product or application.
+ * @param {string} logo - Another logo, typically used for the company logo.
+ * @param {string} applicationTitle - The title of the application.
+ * @param {string | string[]} infoTooltipContent - Content for the tooltip displayed next to the info icon.
+ * @param {Icons | Icons[]} [centerIcons] - Icons displayed in the center section.
+ * @param {string | string[]} [centerSectionContent] - Content displayed in the  section.
+ * @param {string} [tooltipStyle] - CSS styling for the tooltip.
+ * @param {string} [headertooltipcolour] - apply custom background colour to info tooltip .
+ * @param {string} [headertooltipcontentstyle] - apply CSS stling to info tooltip content .
+ * @param {string} [centerSectionContentstyle] - CSS styling for the  section content.
  *  
- * ### Example
- *  @example
- *    <Header logo={kanerikalogo}  infoTooltipContent={TooltipContentOfInfo} rightsectContent={TooltipContentOfInfo} rightSectContentstyle='cursor-pointer text-md' rightIcons={rightIcons} />
- *   
- *   @returns {JSX.Element}
+ * ### Example Usage:
+ * ```jsx
+ * <Header 
+ *   logo={kanerikalogo}  
+ *   applicationLogo={appLogo} 
+ *   applicationTitle="My Application" 
+ *   infoTooltipContent={TooltipContentOfInfo} 
+ *   rightSectionContent={TooltipContentOfInfo} 
+ *   rightSectionContentStyle="cursor-pointer text-md" 
+ *   rightIcons={[<UserIcon />, <SettingsIcon />]} 
+ * />
+ * ```
+ * 
+ * @returns {JSX.Element}
  */
+
 
 const Header: React.FC<HeaderProps> = ({
     logo,
@@ -53,10 +71,10 @@ const Header: React.FC<HeaderProps> = ({
     applicationTitle = "AI/ML POC",
     infoTooltipContent,
     centerIcons,
-    centersectContent,
+    centerSectionContent,
     tooltipStyle,
     headertooltipcolour,
-    centerSectContentstyle,
+    centerSectionContentstyle,
     headertooltipcontentstyle,
     children
 }) => {
@@ -76,22 +94,22 @@ const Header: React.FC<HeaderProps> = ({
                 {/* Center Content */}
                 <div className="flex justify-start ml-2 space-x-2  items-center ">
                     <span className="text-2xl text-title-colour font-semibold">{applicationTitle}</span>
-                    <Tooltip tooltipContent={infoTooltipContent} tooltipcontentstyle={headertooltipcontentstyle} tooltipColour={headertooltipcolour} position="bottom" className={tooltipStyle}>
+                    <Tooltip content={infoTooltipContent} contentStyle={headertooltipcontentstyle} colour={headertooltipcolour} position="bottom" className={tooltipStyle}>
                         <InformationCircleIcon className="h-8 w-7  text-2xl text-title-colour font-bold cursor-pointer" />
                     </Tooltip>
-                    {centerIcons || centersectContent ? (
+                    {centerIcons || centerSectionContent ? (
                         <>
                             {/* center Section Text */}
-                            {centersectContent && (
+                            {centerSectionContent && (
                                 <div>
-                                    {Array.isArray(centersectContent) ? (
+                                    {Array.isArray(centerSectionContent) ? (
                                         <ol className="flex space-x-2">
-                                            {centersectContent.map((item, index) => (
-                                                <li key={index} className={`text-md ${centerSectContentstyle}`}>{item}</li>
+                                            {centerSectionContent.map((item, index) => (
+                                                <li key={index} className={`text-md ${centerSectionContentstyle}`}>{item}</li>
                                             ))}
                                         </ol>
                                     ) : (
-                                        <span className={`text-md ${centerSectContentstyle}`}>{centersectContent}</span>
+                                        <span className={`text-md ${centerSectionContentstyle}`}>{centerSectionContent}</span>
                                     )}
                                 </div>
                             )}
@@ -102,8 +120,8 @@ const Header: React.FC<HeaderProps> = ({
                                     centerIcons.map((item, index) => (
                                         <Tooltip
                                             key={index}
-                                            tooltipContent={item.icontooltip}
-                                            tooltipColour="bg-slate-800"
+                                            content={item.icontooltip}
+                                            colour="bg-slate-800"
                                             position="bottom"
                                             className="text-white"
                                         >
@@ -113,8 +131,8 @@ const Header: React.FC<HeaderProps> = ({
                                 ) : (
                                     centerIcons && (
                                         <Tooltip
-                                            tooltipContent={centerIcons?.icontooltip}
-                                            tooltipColour="bg-slate-800"
+                                            content={centerIcons?.icontooltip}
+                                            colour="bg-slate-800"
                                             position="bottom"
                                             className="text-white"
                                         >

@@ -19,30 +19,44 @@ interface DropdownProps {
 }
 
 /**
+ * @component DROPDOWN
  * 
- * @component DROPDOWN  
  * ### Dropdown Component
  * 
- * @description It is resuable dropdown component with fuctionailty of multiselect and sigle select option ,also search option is also there
+ * @description A reusable dropdown component with support for multi-select, single-select, and search functionality.
  * 
  * ### Features:
- * - **Multi-select Functionailty:**  Supports multi-selection of the option 
- * - **Serach option for Option:** can search for the option
+ * - **Multi-select Functionality:** Allows selection of multiple options.
+ * - **Searchable Dropdown:** Enables filtering of options using a search input.
+ * - **Disabled Functionality:** On requirement basis user can disabled this component .
  * 
- * ###Props
- *  @param {Option[]} options - Optons for the dropdown component
- *  @param {string} [placeholder] -placeholder value for the dropdown component
- *  @param {Boolean} [multiSelect] -Enable the multiselect functioanailty on basis of that
- *  @param {Boolean} [searchable] -Enable the search functioanailty on basis of that
- *  @param {Option | Option[]} [defaultValue] - default value for the component
- *  @param {function} [onChange] 
+ * ### Props:
+ * @param {Option[]} options - Options available in the dropdown.
+ * @param {string} [placeholder] - Placeholder text for the dropdown.
+ * @param {boolean} [multiSelect] - Enables multi-selection if set to `true`.
+ * @param {boolean} [searchable] - Enables the search functionality if set to `true`.
+ * @param {boolean} [disabled] - based on its value user disabled the dropdown.
+ * @param {Option | Option[]} [defaultValue] - Default selected option(s).
+ * @param {function} [onChange] - Callback function triggered when the selection changes.
  * 
- * @example
- * -USAGE
- *    <Dropdown option={optionsContent} multiselect={true} placeholder='select the iteam'/>
+ * ### Example Usage:
+ * ```jsx
+ * const optionsContent = [
+ *   { label: "Option 1", value: "1" },
+ *   { label: "Option 2", value: "2" }
+ * ];
  * 
- * @returns {JSX.Element} 
-*/
+ * <Dropdown 
+ *   options={optionsContent} 
+ *   multiSelect={true} 
+ *   searchable={true}
+ *   placeholder="Select an item"
+ *   onChange={(selected) => console.log(selected)}
+ * />
+ * ```
+ * 
+ * @returns {JSX.Element}
+ */
 
 
 
@@ -261,7 +275,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     return (
         <div className="relative w-full" ref={dropdownRef}>
             <div
-                className={`min-h-10 flex items-center border rounded-lg p-2 
+                className={`flex items-center border rounded-lg py-1 px-2 
                 ${disabled ? 'bg-gray-200 cursor-not-allowed border-dropdown-border' : 'bg-white border-dropdown-border cursor-pointer'}`}
                 onClick={() => !disabled && setIsOpen(!isOpen)}
             >

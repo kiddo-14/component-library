@@ -8,33 +8,46 @@ interface CardProps {
     icon?: React.ReactElement | React.ReactElement[];
     price?: string
     highlightedText?: string;
-    isSelected?:boolean;
+    isSelected?: boolean;
 }
 /**
- * @component
- * ### Product Card
+ * @component Product Card
  * 
- * @description - it is reuseable KPI card componet that is specificaly design for kpis card like in application you want to show your kpis and their respective data so use this
+ * @description A reusable product card component designed to display product details, including an image, title, price, and additional information.
  * 
- * ### PARAMS
+ * ### Features:
+ * - Displays product title, image, and price.
+ * - Supports an optional highlighted text section.
+ * - Includes an icon for additional content representation.
+ * - Flexible description section that supports text or elements.
  * 
- * @param {React.ReactElement} icon - it is for iconn in content section
- * @param {string} title - it is for the name of the product
- * @param { string} [price] - it is shows the ammount of particular product
- * @param {string} [image] - display the image of the product
- * @param {string} [highlightedText] - it is for highlted text in content section
- * @param {string |string[]} description - it is for the product card content
+ * ### Props:
+ * @param {React.ReactElement} icon - Icon displayed in the content section.
+ * @param {string} title - The name of the product.
+ * @param {string} [price] - Displays the product's price or cost.
+ * @param {string} [image] - URL of the product image.
+ * @param {string} [highlightedText] - Highlights specific information within the content section.
+ * @param {string | string[]} description - The content of the product card
  * 
- * @example
- *     <ProductCard title='Audi Q8' description={TooltipContentOfInfo} price='1234' highlightedText='this is my highleted text' icon={cardIcon}/> 
+ * ### Example Usage:
+ * ```jsx
+ * <ProductCard 
+ *   title="Audi Q8" 
+ *   description='Luxury SUV with advanced features' 
+ *   price="$123,456" 
+ *   highlightedText="Limited Edition" 
+ *   icon={<CarIcon />} 
+ *   image="https://example.com/audi-q8.jpg" 
+ * />
+ * ```
  * 
  * @returns {JSX.Element}
- * 
  */
 
-const ProductCard: React.FC<CardProps> = ({ image, title, description, icon, price, highlightedText,isSelected }) => {
+
+const ProductCard: React.FC<CardProps> = ({ image, title, description, icon, price, highlightedText, isSelected }) => {
     return (
-        <div className={`w-full ${isSelected ?' border-2  border-selected-card-border-colour shadow-lg ' :'shadow-md' }  bg-white  rounded-md flex flex-col`}>
+        <div className={`w-full ${isSelected ? ' border-2  border-selected-card-border-colour shadow-lg ' : 'shadow-md'}  bg-white  rounded-md flex flex-col`}>
             {/* Image Section */}
             {image && (
                 <div className="w-full">
@@ -60,13 +73,13 @@ const ProductCard: React.FC<CardProps> = ({ image, title, description, icon, pri
                                     ))}
                                 </div>
                             ) : (
-                                
+
                                 <span className="text-sm">{description}</span>
                             )}
-                        {/* Number */}
-                        {price && (
-                            <span className="text-lg font-semibold">${price}</span>
-                        )}
+                            {/* Number */}
+                            {price && (
+                                <span className="text-lg font-semibold">${price}</span>
+                            )}
                         </div>
 
                     </div>

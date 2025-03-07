@@ -13,19 +13,20 @@ interface chatwindowProps {
 
 /** 
  * @component ChatWindow
+ * 
  * ### ChatWindow Component
  * 
- * @description A Chatwindow component  all the chatmessages display here in this section.
+ * @description A ChatWindow component that displays all chat messages.
  * 
  * ### Props:
- * @param {Message} messages - it store all the messages of the chat.
- * @param {ReactNode} welcomeMessage - define the welcome message in chat bot if there is no messages.
- * @param {boolean} isLoading - use to make it disabled the feild unitil the Ai resposne recived back.
- * @param {RefObject} chatwindowRef -use to reach at the recent message
- *.
+ * @param {Message} messages - Stores all chat messages.
+ * @param {ReactNode} welcomeMessage - Defines the welcome message when there are no messages in the chat.
+ * @param {boolean} isLoading - Disables the input field until the AI response is received.
+ * @param {RefObject} chatWindowRef - Used to scroll to the most recent message.
  * 
- * @returns {JSX.Element} - 
+ * @returns {JSX.Element} - A JSX element representing the ChatWindow component.
  */
+
 const ChatWindow: React.FC<chatwindowProps> = ({ messages, welcomeMessage, chatwindowRef, isLoading }) => {
 
     useEffect(() => {
@@ -43,14 +44,15 @@ const ChatWindow: React.FC<chatwindowProps> = ({ messages, welcomeMessage, chatw
                 messages.map((message, index) => (
                     <ChatMessage
                         message={message}
+                        key={`${message?.id}}-${index}`}
                     />
                 ))
             )
                 :
                 (
-                    <p className="flex items-center justify-center h-full text-gray-500 text-base">
+                    <div className="flex items-center justify-center h-full text-gray-500 text-base">
                         {welcomeMessage}
-                    </p>
+                    </div>
                 )
             }
 

@@ -11,49 +11,54 @@ interface ChatbotProps {
     placeholder: string;
     welcomeMessage: React.ReactNode;
     inputIcon: React.ReactElement;
-    isLoading:boolean
+    isLoading: boolean
     actionsItems?: actionsItems | actionsItems[]
-    inputText: string; 
+    inputText: string;
     setInputText: React.Dispatch<React.SetStateAction<string>>;
-    isdisabled:boolean
-    
-}
+    isdisabled: boolean
 
+}
 /** 
  * @component Chatbot
- * ### ChatBot Component
  * 
- * @description A reusable ChatBot component that allows users to create chatbot with predefined styles and manipulate chatbot response according to user requirements.
+ * ### Chatbot Component
+ * 
+ * @description A reusable chatbot component that allows users to create a chatbot with predefined styles and customize responses as per their requirements.
  * 
  * ### Features:
- * - **Action Items:** According to user requirement user can add the action items like upload in input field .
- * - **Controll over chat message:** User have full control over the chat message wheather it is user message or it is chatBot response.
- * - **Customization:** User can customize thewelcome message and icons according to the requirements 
- * - 
+ * - **Action Items:** Users can add action items, such as an upload button, in the input field based on their needs.
+ * - **Full Control Over Messages:** Users have complete control over chat messages, whether it's a user message or a chatbot response.
+ * - **Customization:** The chatbot name, welcome message, and icons can be customized as required.
  * 
  * ### Props:
- * @param {string} [chatbotName] - it is an optional props if we are using chatbot in side section where we want to name our chatbot at that time we can use this prop to name the chatbot
- * @param {function} [closeChatbot] - for close down the chatbot component
- * @param {Message} chatmessage - it store all the messages of the chat.
- * @param {function} handleSubmit  - this is function that is responsible for the chatbot response.
- * @param {string} placeholder - Define the placeholde for the input feild
- * @param {ReactNode} welcomeMessage - define the welcome message in chat bot if there is no messages.
- * @param {ReactElement} inputIcon - define the submit icon in chatinput field.
- * @param {boolean} isLoading - use to make it disabled the feild unitil the Ai resposne recived back.
- * @param {actionsItems} actionsItems - To define the actionItems in the input feild.
- *.@param {string} inputText- it store the current asked query 
- * @param {boolean} isdisabled - to make chatbot disabled
- *
+ * @param {string} [chatbotName] - An optional prop for naming the chatbot, useful when displaying it in a side section.
+ * @param {function} [closeChatbot] - A function to close the chatbot component.
+ * @param {Message} chatMessage - Stores all chat messages.
+ * @param {function} handleSubmit - A function responsible for handling chatbot responses.
+ * @param {string} placeholder - Defines the placeholder text for the input field.
+ * @param {ReactNode} welcomeMessage - Defines the welcome message when there are no messages in the chat.
+ * @param {ReactElement} inputIcon - Defines the submit icon in the chat input field.
+ * @param {boolean} isLoading - Disables the input field until the AI response is received.
+ * @param {actionItems} actionItems - Defines the action items in the input field.
+ * @param {string} inputText - Stores the current user query.
+ * @param {boolean} isDisabled - Disables the chatbot.
  * 
+ * ### Example Usage:
+ * ```jsx
+ * <Chatbot 
+ *   handleSubmit={handleSubmit} 
+ *   inputIcon={inputIcon} 
+ *   chatMessage={messages} 
+ *   placeholder={placeholder}  
+ *   welcomeMessage={welcomeMsg} 
+ *   isLoading={isLoading} 
+ * />
+ * ```
  * 
- * @example **Basic Usage**
- *  <Chatbot handleSubmit={handleSubmit} inputIcon={inputIcon} chatmessage={messages} placeholder={placeholder}  welcomeMessage={wlcmMsg} isLoading={isLoading}/>
- *
- * 
- * @returns {JSX.Element} - 
+ * @returns {JSX.Element}
  */
 
-const ChatBot: React.FC<ChatbotProps> = ({ chatmessage, handleSubmit, placeholder,isLoading, welcomeMessage, inputIcon, actionsItems, closeChatbot, chatbotName,inputText,setInputText,isdisabled }) => {
+const ChatBot: React.FC<ChatbotProps> = ({ chatmessage, handleSubmit, placeholder, isLoading, welcomeMessage, inputIcon, actionsItems, closeChatbot, chatbotName, inputText, setInputText, isdisabled }) => {
 
     // const [isScrollable, setIsScrollable]=useState<boolean>(false);
     // const[isBottom, setIsBottom]=useState<boolean>(true);
@@ -125,10 +130,9 @@ const ChatBot: React.FC<ChatbotProps> = ({ chatmessage, handleSubmit, placeholde
                     inputText={inputText}
                     setInputText={setInputText}
                     isdisabled={isdisabled}
-                    
                 />
             </div>
-        </div>  
+        </div>
 
     )
 }

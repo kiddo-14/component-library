@@ -6,35 +6,39 @@ interface TooltipProps {
     position: "top" | "bottom" | "left" | "right";
     children: React.ReactNode;
     className?: string
-    tooltipContent: string | string[]
-    tooltipColour:string
-    tooltipcontentstyle?:string
+    content: string | string[]
+    colour:string
+    contentStyle?:string
     // elementRef:RefObject<HTMLElement>
 }
 /**
- * @component
+ * @component Tooltip
  * 
- * @description it is reusable tooltip component with functionailty of custmization style
+ * @description A reusable tooltip component with customizable styles and positioning.
  * 
- * ### Features
- *  Position the tooltip to parent coponent position (top bottom left right)
- *  user can modify the tooltip style
+ * ### Features:
+ * - **Positioning:** Can be placed relative to the parent component (top, bottom, left, or right).
+ * - **Customizable Styles:** Allows users to modify tooltip appearance via custom CSS.
  * 
- * ### Params
- *  @param {"top"| "bottom"|"left"|"right"} position - to position the tooltip
- *  @param {ReactNode} children - on that we want to see the tooltip
- *  @param {string} [className] - to  do changes in CSS
- *  @param {string | string[]} tooltipContent -content that is going to see in the tooltip  
+ * ### Props:
+ * @param {"top" | "bottom" | "left" | "right"} position - Position of the tooltip relative to the parent.
+ * @param {React.ReactNode} children - The element that triggers the tooltip on hover.
+ * @param {string} [className] - Custom class for additional styling.
+ * @param {string} [colour] - User-defined color for the tooltip.
+ * @param {string} [contentStyle] - CSS styling for the tooltip content.
+ * @param {string | string[]} content - The text or content displayed inside the tooltip.
  * 
- *  @example
- *   <Tooltip tooltipContent="Developer" position ="top">
- *      <span> Nikhil Bhojak </span>
- *   </Tooltip>
+ * ### Example Usage:
+ * ```jsx
+ * <Tooltip tooltipContent="Developer" position="top">
+ *   <span>Nikhil Bhojak</span>
+ * </Tooltip>
+ * ```
  * 
- *  @returns  {JSX.Element}
- *      
+ * @returns {JSX.Element}
  */
-const Tooltip: React.FC<TooltipProps> = ({ position, children, className, tooltipContent,tooltipcontentstyle, tooltipColour=' bg-slate-200' }) => {
+
+const Tooltip: React.FC<TooltipProps> = ({ position, children, className, content,contentStyle, colour=' bg-slate-200' }) => {
    
     const [isvisible, setisVisible] = useState<boolean>(false);
     const [tooltipStyle, setTooltipStyle] = useState({});
@@ -95,20 +99,20 @@ const Tooltip: React.FC<TooltipProps> = ({ position, children, className, toolti
                     <div
                         ref={tooltipRef}
                         style={tooltipStyle}
-                        className={`absolute text-black text-sm p-2 rounded shadow-lg whitespace-nowrap z-50 ${tooltipColour} ${className}`}
+                        className={`absolute text-black text-sm p-2 rounded shadow-lg whitespace-nowrap z-50 ${colour} ${className}`}
                     >
-                        {Array.isArray(tooltipContent) ? (
+                        {Array.isArray(content) ? (
                             <ol>
-                                {tooltipContent.map((tooltip, index) => (
-                                    <li key={index} className={`${tooltipcontentstyle}`}>{tooltip}</li>
+                                {content.map((tooltip, index) => (
+                                    <li key={index} className={`${contentStyle}`}>{tooltip}</li>
                                 ))}
                             </ol>
                         ) : (
-                            <span className={`${tooltipcontentstyle}`}>{tooltipContent}</span>
+                            <span className={`${contentStyle}`}>{content}</span>
                         )}
 
                         <div
-                            className={`absolute w-2 h-2 ${tooltipColour}  transform rotate-45 ${position === "top"
+                            className={`absolute w-2 h-2 ${colour}  transform rotate-45 ${position === "top"
                                 ? "bottom-[-4px] left-1/2 -translate-x-1/2"
                                 : position === "bottom"
                                     ? "top-[-4px] left-1/2 -translate-x-1/2"
